@@ -89,10 +89,17 @@ extension GoalVC : UITableViewDelegate, UITableViewDataSource{
             tableView.deleteRows(at: [indexPath], with: .automatic)
         }
         
+        let addAction = UITableViewRowAction(style: .normal, title: "Add one") { (rowaAction, indexPath) in
+            self.setProgress(atIndexPath: indexPath)
+            tableView.reloadRows(at: [indexPath], with: .automatic)
+        }
+        
         deleteAction.backgroundColor = #colorLiteral(red: 1, green: 0.1491314173, blue: 0, alpha: 1)
-        return [deleteAction]
+        addAction.backgroundColor = #colorLiteral(red: 0.9647058824, green: 0.6509803922, blue: 0.137254902, alpha: 1)
+        return [deleteAction, addAction]
+        
     }
- 
+    
     
     
 }
@@ -108,7 +115,7 @@ extension GoalVC{
         
         do{
             try manegedContext.save()
-            print("Successfly remove data")
+            print("Successflly remove data")
         }catch{
             debugPrint("Could not remove\(error.localizedDescription)")
         }
@@ -121,11 +128,26 @@ extension GoalVC{
         let fetchRequest = NSFetchRequest<Goal>(entityName: "Goal")
         do{
             goals = try manegedContext.fetch(fetchRequest)
-            print("Successfly fetch data")
+            print("Successflly fetch data")
             completion(true)
         }catch {
             debugPrint("Could not catch \(error.localizedDescription)")
             completion(false)
+        }
+    }
+    func setProgress(atIndexPath indexPath:IndexPath){
+        guard let manegedContext = appDelegate?.persistentContainer.viewContext else {return}
+        let chosenGoal = goals[indexPath.row]
+        if chosenGoal.goalProgress < chosenGoal.goalCompletion{
+            chosenGoal.goalProgress = chosenGoal.goalProgress + 1
+        }else {return}
+        
+        do{
+            try manegedContext.save()
+            print("successfully set progress")
+        }catch{
+            debugPrint("Could not catch progress \(error.localizedDescription)")
+            
         }
     }
 }
