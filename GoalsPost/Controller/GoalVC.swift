@@ -15,7 +15,7 @@ let appDelegate = UIApplication.shared.delegate as? AppDelegate
 
 class GoalVC: UIViewController {
     
-    var goals:[Goal] = []
+    var goalViewModel = GoalViewModel()
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -23,28 +23,21 @@ class GoalVC: UIViewController {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
-        
     }
-    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        fetchCoreDataObject()
+        
+        goalViewModel.fetchGoals { [weak self](success) in
+            if let goalVC = self {
+                goalVC.tableView.isHidden = !(goalVC.goalViewModel.goals.count >= 1)
+            }
+        }
+        
         tableView.reloadData()
     }
     
-    func fetchCoreDataObject(){
-        self.fetch { (complete) in
-            if complete{
-                if goals.count >= 1{
-                    tableView.isHidden = false
-                }else{
-                    tableView.isHidden = true
-                }
-                
-            }
-        }
-    }
+    
     
     @IBAction func addGoalBtnWasPressed(_ sender: Any) {
         
@@ -61,13 +54,13 @@ extension GoalVC : UITableViewDelegate, UITableViewDataSource{
         return 1
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return goals.count
+        return self.goalViewModel.goals.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "goalCell") as? GoalCell else {
             return UITableViewCell()}
         
-        let goal = goals[indexPath.row]
+        let goal = self.goalViewModel.goals[indexPath.row]
         
         cell.configureCell(goal: goal)
         return cell
@@ -84,13 +77,15 @@ extension GoalVC : UITableViewDelegate, UITableViewDataSource{
         
         let deleteAction = UITableViewRowAction(style: .destructive, title: "DELETE") { (rowAction, indexPath) in
             
-            self.removeGoal(atIndexPath: indexPath)
-            self.fetchCoreDataObject()
+            self.goalViewModel.removeGoal(atIndexPath: indexPath)
+            self.goalViewModel.fetchGoals(completion: { (success) in
+            })
+            
             tableView.deleteRows(at: [indexPath], with: .automatic)
         }
         
         let addAction = UITableViewRowAction(style: .normal, title: "Add one") { (rowaAction, indexPath) in
-            self.setProgress(atIndexPath: indexPath)
+            self.goalViewModel.setProgress(atIndexPath: indexPath)
             tableView.reloadRows(at: [indexPath], with: .automatic)
         }
         
@@ -104,51 +99,5 @@ extension GoalVC : UITableViewDelegate, UITableViewDataSource{
     
 }
 
-extension GoalVC{
-    
-    func removeGoal(atIndexPath indexPath:IndexPath){
-        guard let manegedContext = appDelegate?.persistentContainer.viewContext else {
-            return
-        }
-        
-        manegedContext.delete(goals[indexPath.row])
-        
-        do{
-            try manegedContext.save()
-            print("Successflly remove data")
-        }catch{
-            debugPrint("Could not remove\(error.localizedDescription)")
-        }
-        
-    }
-    func fetch(completion:(_ complete:Bool)->()){
-        guard  let manegedContext = appDelegate?.persistentContainer.viewContext else {
-            return
-        }
-        let fetchRequest = NSFetchRequest<Goal>(entityName: "Goal")
-        do{
-            goals = try manegedContext.fetch(fetchRequest)
-            print("Successflly fetch data")
-            completion(true)
-        }catch {
-            debugPrint("Could not catch \(error.localizedDescription)")
-            completion(false)
-        }
-    }
-    func setProgress(atIndexPath indexPath:IndexPath){
-        guard let manegedContext = appDelegate?.persistentContainer.viewContext else {return}
-        let chosenGoal = goals[indexPath.row]
-        if chosenGoal.goalProgress < chosenGoal.goalCompletion{
-            chosenGoal.goalProgress = chosenGoal.goalProgress + 1
-        }else {return}
-        
-        do{
-            try manegedContext.save()
-            print("successfully set progress")
-        }catch{
-            debugPrint("Could not catch progress \(error.localizedDescription)")
-            
-        }
-    }
-}
+
 
