@@ -11,13 +11,13 @@ import UIKit
 
 class FinishGoalVC: UIViewController, UITextFieldDelegate {
     
+    var goalViewModel:GoalViewModel!
+    var goalDescription:String!
+    var goalType:GoalType!
 
     @IBOutlet weak var createGoalBtn: UIButton!
     
     @IBOutlet weak var pointsTxtField: UITextField!
-    
-    var goalDescription:String!
-    var goalType:GoalType!
     
     
     override func viewDidLoad() {
@@ -34,38 +34,24 @@ class FinishGoalVC: UIViewController, UITextFieldDelegate {
     
     @IBAction func createGoalBtnWasPressed(_ sender: Any) {
         if pointsTxtField.text != ""{
-            self.save { (complete) in
+            
+            guard let text = pointsTxtField.text else { return }
+            guard let goalPoints = Int(text) else { return }
+            
+            guard let goalType = self.goalType else { return }
+            
+            self.goalViewModel.save(goalCompletion: goalPoints, goalDescription: self.goalDescription, goalType: goalType)
+            { (complete) in
                 if complete{
                     dismiss(animated: true, completion: nil)
                 }
             }
         }
-        // pass data into CORE Data Goal Model
-        
-        
+
     }
-    
     func initdata(description:String,type:GoalType){
         self.goalDescription = description
         self.goalType = type
-    }
-    func save(completion:(_ finished:Bool)->()){
-        guard let manegedContext = appDelegate?.persistentContainer.viewContext else{return}
-        let goal = Goal(context: manegedContext)
-        goal.goalDescription = goalDescription
-        goal.goalType = goalType.rawValue
-        goal.goalProgress = Int32(0)
-        goal.goalCompletion = Int32(pointsTxtField.text!)!
-        
-        do{
-           try manegedContext.save()
-            print("Successfuly saved data")
-            completion(true)
-            
-        }catch{
-            debugPrint("Could not save:\(error.localizedDescription)")
-            completion(false)
-        }
     }
     
 }

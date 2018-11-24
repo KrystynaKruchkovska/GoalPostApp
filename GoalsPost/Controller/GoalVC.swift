@@ -41,21 +41,26 @@ class GoalVC: UIViewController {
     
     @IBAction func addGoalBtnWasPressed(_ sender: Any) {
         
-        
-        guard let createGoalVC = storyboard?.instantiateViewController(withIdentifier: "CreateGoalVC") else {
+        guard let createGoalVC = storyboard?.instantiateViewController(withIdentifier: "CreateGoalVC") as? CreateGoalVC else {
             return
         }
+        
+        createGoalVC.goalViewModel = self.goalViewModel
         presentDetail(createGoalVC)
     }
     
 }
+
+
 extension GoalVC : UITableViewDelegate, UITableViewDataSource{
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.goalViewModel.goals.count
     }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "goalCell") as? GoalCell else {
             return UITableViewCell()}
@@ -65,6 +70,7 @@ extension GoalVC : UITableViewDelegate, UITableViewDataSource{
         cell.configureCell(goal: goal)
         return cell
     }
+    
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
@@ -92,10 +98,7 @@ extension GoalVC : UITableViewDelegate, UITableViewDataSource{
         deleteAction.backgroundColor = #colorLiteral(red: 1, green: 0.1491314173, blue: 0, alpha: 1)
         addAction.backgroundColor = #colorLiteral(red: 0.9647058824, green: 0.6509803922, blue: 0.137254902, alpha: 1)
         return [deleteAction, addAction]
-        
     }
-    
-    
     
 }
 

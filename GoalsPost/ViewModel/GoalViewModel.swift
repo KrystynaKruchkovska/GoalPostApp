@@ -10,12 +10,8 @@ import UIKit
 import CoreData
 
 class GoalViewModel: NSObject {
-
-    public private(set) var goals:[Goal] = []
     
-}
-
-extension GoalViewModel{
+    public private(set) var goals:[Goal] = []
     
     func removeGoal(atIndexPath indexPath:IndexPath){
         guard let manegedContext = appDelegate?.persistentContainer.viewContext else {
@@ -32,7 +28,8 @@ extension GoalViewModel{
         }
         
     }
-    
+
+
     func fetchGoals( completion:(_ complete:Bool)->() ){
         guard  let manegedContext = appDelegate?.persistentContainer.viewContext else {
             return
@@ -60,7 +57,30 @@ extension GoalViewModel{
             print("successfully set progress")
         }catch{
             debugPrint("Could not catch progress \(error.localizedDescription)")
+        }
+        
+    }
+    
+
+    
+    
+    func save(goalCompletion:Int,goalDescription:String,goalType:GoalType, completion:(_ finished:Bool)->()){
+        guard let manegedContext = appDelegate?.persistentContainer.viewContext else{return}
+        let goal = Goal(context: manegedContext)
+        goal.goalDescription = goalDescription
+        goal.goalType = goalType.rawValue
+        goal.goalProgress = Int32(0)
+        goal.goalCompletion = Int32(goalCompletion)
+        
+        do{
+            try manegedContext.save()
+            print("Successfuly saved data")
+            completion(true)
             
+        }catch{
+            debugPrint("Could not save:\(error.localizedDescription)")
+            completion(false)
         }
     }
+    
 }
