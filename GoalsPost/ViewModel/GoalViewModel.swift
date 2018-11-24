@@ -11,76 +11,42 @@ import CoreData
 
 class GoalViewModel: NSObject {
     
-    public private(set) var goals:[Goal] = []
+    private var dbService:DBServiceProtocol
+    
+    var goals:[Goal] {
+        get{
+            return self.dbService.getGoals()
+        }
+    }
+    
+    init(dbService:DBServiceProtocol) {
+        self.dbService = dbService
+    }
     
     func removeGoal(atIndexPath indexPath:IndexPath){
-        guard let manegedContext = appDelegate?.persistentContainer.viewContext else {
-            return
-        }
-        
-        manegedContext.delete(goals[indexPath.row])
-        
-        do{
-            try manegedContext.save()
-            print("Successflly remove data")
-        }catch{
-            debugPrint("Could not remove\(error.localizedDescription)")
-        }
-        
+        self.dbService.removeGoal(atIndexPath: indexPath)
     }
 
-
     func fetchGoals( completion:(_ complete:Bool)->() ){
-        guard  let manegedContext = appDelegate?.persistentContainer.viewContext else {
-            return
-        }
-        let fetchRequest = NSFetchRequest<Goal>(entityName: "Goal")
-        do{
-            goals = try manegedContext.fetch(fetchRequest)
-            print("Successflly fetch data")
-            completion(true)
-        }catch {
-            debugPrint("Could not catch \(error.localizedDescription)")
-            completion(false)
-        }
+        self.dbService.fetchGoals(completion: completion)
     }
     
     func setProgress(atIndexPath indexPath:IndexPath){
-        guard let manegedContext = appDelegate?.persistentContainer.viewContext else {return}
-        let chosenGoal = goals[indexPath.row]
-        if chosenGoal.goalProgress < chosenGoal.goalCompletion{
-            chosenGoal.goalProgress = chosenGoal.goalProgress + 1
-        }else {return}
-        
-        do{
-            try manegedContext.save()
-            print("successfully set progress")
-        }catch{
-            debugPrint("Could not catch progress \(error.localizedDescription)")
-        }
-        
+        self.dbService.setProgress(atIndexPath: indexPath)
     }
     
-
-    
-    
     func save(goalCompletion:Int,goalDescription:String,goalType:GoalType, completion:(_ finished:Bool)->()){
-        guard let manegedContext = appDelegate?.persistentContainer.viewContext else{return}
-        let goal = Goal(context: manegedContext)
-        goal.goalDescription = goalDescription
-        goal.goalType = goalType.rawValue
-        goal.goalProgress = Int32(0)
-        goal.goalCompletion = Int32(goalCompletion)
+        self.dbService.addGoal(goalCompletion: goalCompletion, goalDescription: goalDescription, goalType: goalType, completion: completion)
+    }
+    
+    func pointsCompleted()->Int32 {
+        var completed:Int32 = 0
         
-        do{
-            try manegedContext.save()
-            print("Successfuly saved data")
-            completion(true)
-            
-        }catch{
-            debugPrint("Could not save:\(error.localizedDescription)")
-            completion(false)
+        for goal in self.goals {
+            completed += goal.goalProgress
         }
+        
+        return completed
     }
     
 }

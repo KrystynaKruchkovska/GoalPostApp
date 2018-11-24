@@ -15,7 +15,7 @@ let appDelegate = UIApplication.shared.delegate as? AppDelegate
 
 class GoalVC: UIViewController {
     
-    var goalViewModel = GoalViewModel()
+    var goalViewModel = GoalViewModel(dbService: CoreDataService())
     
     @IBOutlet weak var tableView: UITableView!
     

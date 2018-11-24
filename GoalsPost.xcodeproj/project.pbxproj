@@ -14,6 +14,14 @@
 		042CFC39217DF68B001F8D15 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 042CFC38217DF68B001F8D15 /* Assets.xcassets */; };
 		042CFC3C217DF68B001F8D15 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 042CFC3A217DF68B001F8D15 /* LaunchScreen.storyboard */; };
 		044AC7DB21A9A1FD00C4C591 /* GoalViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044AC7DA21A9A1FD00C4C591 /* GoalViewModel.swift */; };
+		044AC7DE21A9CA4B00C4C591 /* CoreDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044AC7DD21A9CA4B00C4C591 /* CoreDataService.swift */; };
+		044AC7E021A9CE1400C4C591 /* DBServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044AC7DF21A9CE1400C4C591 /* DBServiceProtocol.swift */; };
+		044AC7F221A9D8EC00C4C591 /* GoalsPostTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044AC7F121A9D8EC00C4C591 /* GoalsPostTests.swift */; };
+		044AC7FA21A9D97700C4C591 /* GoalViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044AC7F921A9D97700C4C591 /* GoalViewModelTest.swift */; };
+		044AC7FC21A9DB1E00C4C591 /* GoalViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044AC7DA21A9A1FD00C4C591 /* GoalViewModel.swift */; };
+		044AC7FD21A9DB5000C4C591 /* DBServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044AC7DF21A9CE1400C4C591 /* DBServiceProtocol.swift */; };
+		044AC7FE21A9DB5000C4C591 /* GoalType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0466F366217E02E2000F2C30 /* GoalType.swift */; };
+		044AC80021A9DBA400C4C591 /* GoalsPost.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 042CFC35217DF687001F8D15 /* GoalsPost.xcdatamodeld */; };
 		0466F365217DFF78000F2C30 /* GoalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0466F364217DFF78000F2C30 /* GoalCell.swift */; };
 		0466F367217E02E2000F2C30 /* GoalType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0466F366217E02E2000F2C30 /* GoalType.swift */; };
 		0466F369217E09AC000F2C30 /* CreateGoalVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0466F368217E09AC000F2C30 /* CreateGoalVC.swift */; };
@@ -22,6 +30,16 @@
 		04C55EB1217F079D0079CBF7 /* UIButtonExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C55EB0217F079D0079CBF7 /* UIButtonExt.swift */; };
 		04C55EB3217F13AB0079CBF7 /* FinishGoalVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C55EB2217F13AA0079CBF7 /* FinishGoalVC.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		044AC7F421A9D8EC00C4C591 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 042CFC23217DF687001F8D15 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 042CFC2A217DF687001F8D15;
+			remoteInfo = GoalsPost;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		042CFC2B217DF687001F8D15 /* GoalsPost.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoalsPost.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -33,6 +51,12 @@
 		042CFC3B217DF68B001F8D15 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		042CFC3D217DF68B001F8D15 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		044AC7DA21A9A1FD00C4C591 /* GoalViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalViewModel.swift; sourceTree = "<group>"; };
+		044AC7DD21A9CA4B00C4C591 /* CoreDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataService.swift; sourceTree = "<group>"; };
+		044AC7DF21A9CE1400C4C591 /* DBServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBServiceProtocol.swift; sourceTree = "<group>"; };
+		044AC7EF21A9D8EC00C4C591 /* GoalsPostTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GoalsPostTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		044AC7F121A9D8EC00C4C591 /* GoalsPostTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalsPostTests.swift; sourceTree = "<group>"; };
+		044AC7F321A9D8EC00C4C591 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		044AC7F921A9D97700C4C591 /* GoalViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalViewModelTest.swift; sourceTree = "<group>"; };
 		0466F364217DFF78000F2C30 /* GoalCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalCell.swift; sourceTree = "<group>"; };
 		0466F366217E02E2000F2C30 /* GoalType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalType.swift; sourceTree = "<group>"; };
 		0466F368217E09AC000F2C30 /* CreateGoalVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGoalVC.swift; sourceTree = "<group>"; };
@@ -50,13 +74,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		044AC7EC21A9D8EC00C4C591 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		042CFC22217DF686001F8D15 = {
 			isa = PBXGroup;
 			children = (
+				044AC7E121A9D56200C4C591 /* GoalsPostTest */,
 				042CFC2D217DF687001F8D15 /* GoalsPost */,
+				044AC7F021A9D8EC00C4C591 /* GoalsPostTests */,
 				042CFC2C217DF687001F8D15 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -65,6 +98,7 @@
 			isa = PBXGroup;
 			children = (
 				042CFC2B217DF687001F8D15 /* GoalsPost.app */,
+				044AC7EF21A9D8EC00C4C591 /* GoalsPostTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -72,6 +106,7 @@
 		042CFC2D217DF687001F8D15 /* GoalsPost */ = {
 			isa = PBXGroup;
 			children = (
+				044AC7DC21A9CA1900C4C591 /* Services */,
 				042CFC46217DF6CE001F8D15 /* Extensions */,
 				042CFC45217DF6AF001F8D15 /* Enum */,
 				042CFC44217DF6A8001F8D15 /* View */,
@@ -131,6 +166,32 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		044AC7DC21A9CA1900C4C591 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				044AC7DD21A9CA4B00C4C591 /* CoreDataService.swift */,
+				044AC7DF21A9CE1400C4C591 /* DBServiceProtocol.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		044AC7E121A9D56200C4C591 /* GoalsPostTest */ = {
+			isa = PBXGroup;
+			children = (
+				044AC7F921A9D97700C4C591 /* GoalViewModelTest.swift */,
+			);
+			path = GoalsPostTest;
+			sourceTree = "<group>";
+		};
+		044AC7F021A9D8EC00C4C591 /* GoalsPostTests */ = {
+			isa = PBXGroup;
+			children = (
+				044AC7F121A9D8EC00C4C591 /* GoalsPostTests.swift */,
+				044AC7F321A9D8EC00C4C591 /* Info.plist */,
+			);
+			path = GoalsPostTests;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -151,18 +212,41 @@
 			productReference = 042CFC2B217DF687001F8D15 /* GoalsPost.app */;
 			productType = "com.apple.product-type.application";
 		};
+		044AC7EE21A9D8EC00C4C591 /* GoalsPostTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 044AC7F621A9D8ED00C4C591 /* Build configuration list for PBXNativeTarget "GoalsPostTests" */;
+			buildPhases = (
+				044AC7EB21A9D8EC00C4C591 /* Sources */,
+				044AC7EC21A9D8EC00C4C591 /* Frameworks */,
+				044AC7ED21A9D8EC00C4C591 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				044AC7F521A9D8EC00C4C591 /* PBXTargetDependency */,
+			);
+			name = GoalsPostTests;
+			productName = GoalsPostTests;
+			productReference = 044AC7EF21A9D8EC00C4C591 /* GoalsPostTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		042CFC23217DF687001F8D15 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0940;
+				LastSwiftUpdateCheck = 1010;
 				LastUpgradeCheck = 0940;
 				ORGANIZATIONNAME = CO.KrystynaKruchcovska;
 				TargetAttributes = {
 					042CFC2A217DF687001F8D15 = {
 						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 1010;
+					};
+					044AC7EE21A9D8EC00C4C591 = {
+						CreatedOnToolsVersion = 10.1;
+						TestTargetID = 042CFC2A217DF687001F8D15;
 					};
 				};
 			};
@@ -180,6 +264,7 @@
 			projectRoot = "";
 			targets = (
 				042CFC2A217DF687001F8D15 /* GoalsPost */,
+				044AC7EE21A9D8EC00C4C591 /* GoalsPostTests */,
 			);
 		};
 /* End PBXProject section */
@@ -195,6 +280,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		044AC7ED21A9D8EC00C4C591 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -207,16 +299,39 @@
 				0466F367217E02E2000F2C30 /* GoalType.swift in Sources */,
 				044AC7DB21A9A1FD00C4C591 /* GoalViewModel.swift in Sources */,
 				042CFC31217DF687001F8D15 /* GoalVC.swift in Sources */,
+				044AC7DE21A9CA4B00C4C591 /* CoreDataService.swift in Sources */,
 				04C55EAF217F01400079CBF7 /* UIViewExt.swift in Sources */,
 				042CFC37217DF687001F8D15 /* GoalsPost.xcdatamodeld in Sources */,
 				0466F36B217E0DCF000F2C30 /* UIViewControllerExt.swift in Sources */,
 				04C55EB1217F079D0079CBF7 /* UIButtonExt.swift in Sources */,
+				044AC7E021A9CE1400C4C591 /* DBServiceProtocol.swift in Sources */,
 				04C55EB3217F13AB0079CBF7 /* FinishGoalVC.swift in Sources */,
 				042CFC2F217DF687001F8D15 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		044AC7EB21A9D8EC00C4C591 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				044AC80021A9DBA400C4C591 /* GoalsPost.xcdatamodeld in Sources */,
+				044AC7FD21A9DB5000C4C591 /* DBServiceProtocol.swift in Sources */,
+				044AC7FE21A9DB5000C4C591 /* GoalType.swift in Sources */,
+				044AC7FC21A9DB1E00C4C591 /* GoalViewModel.swift in Sources */,
+				044AC7F221A9D8EC00C4C591 /* GoalsPostTests.swift in Sources */,
+				044AC7FA21A9D97700C4C591 /* GoalViewModelTest.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		044AC7F521A9D8EC00C4C591 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 042CFC2A217DF687001F8D15 /* GoalsPost */;
+			targetProxy = 044AC7F421A9D8EC00C4C591 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		042CFC32217DF687001F8D15 /* Main.storyboard */ = {
@@ -356,6 +471,27 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = V8ZG3WLBMM;
+				INFOPLIST_FILE = GoalsPost/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.KrystynaKruchkovska.GoalsPost;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		042CFC42217DF68B001F8D15 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = V8ZG3WLBMM;
 				INFOPLIST_FILE = GoalsPost/Info.plist;
@@ -368,23 +504,50 @@
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
-			name = Debug;
+			name = Release;
 		};
-		042CFC42217DF68B001F8D15 /* Release */ = {
+		044AC7F721A9D8ED00C4C591 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = V8ZG3WLBMM;
-				INFOPLIST_FILE = GoalsPost/Info.plist;
+				INFOPLIST_FILE = GoalsPostTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.KrystynaKruchkovska.GoalsPost;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.KrystynaKruchkovska.GoalsPostTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GoalsPost.app/GoalsPost";
+			};
+			name = Debug;
+		};
+		044AC7F821A9D8ED00C4C591 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = V8ZG3WLBMM;
+				INFOPLIST_FILE = GoalsPostTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.KrystynaKruchkovska.GoalsPostTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GoalsPost.app/GoalsPost";
 			};
 			name = Release;
 		};
@@ -405,6 +568,15 @@
 			buildConfigurations = (
 				042CFC41217DF68B001F8D15 /* Debug */,
 				042CFC42217DF68B001F8D15 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		044AC7F621A9D8ED00C4C591 /* Build configuration list for PBXNativeTarget "GoalsPostTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				044AC7F721A9D8ED00C4C591 /* Debug */,
+				044AC7F821A9D8ED00C4C591 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
